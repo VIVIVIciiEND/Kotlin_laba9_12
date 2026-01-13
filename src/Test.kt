@@ -14,6 +14,29 @@ data class Item(
         return "Id предмета $id\nимя $name\nколичество $quantity"
     }
 }
+abstract  class Human(val name: String){
+    abstract var age : Int
+    abstract fun hello()
+
+}
+class Person(name: String , override var age : Int): Human(name){
+    override fun hello() {
+        println("My name is $name")
+    }
+}
+abstract class Figure{
+    abstract fun perimeter(): Float
+    abstract fun area(): Float
+}
+class Rectangle(val width : Float , val height : Float) : Figure(){
+    override fun perimeter(): Float {
+        return 2* (width+height)
+    }
+
+    override fun area(): Float {
+        return width * height
+    }
+}
 fun main(){
     val sword = Item(1 , "Sword" , 1)
     val betterSword = sword.copy(quantity = 2)
@@ -26,4 +49,9 @@ fun main(){
 //    println(age)
 //    age = - 345
 //    println(age)
+    val dinara: Person = Person("Dinara", 18)
+    val maksim: Human = Person("Maksim",20)
+    dinara.hello()
+    maksim.hello()
+//    val paver: Human = Human("Pavel")
 }
