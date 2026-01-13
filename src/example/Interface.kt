@@ -1,3 +1,5 @@
+package example
+
 interface Movable{
     var speed : Int
     val model : String
@@ -7,13 +9,13 @@ interface Movable{
         println("останавливаемся")
     }
 }
-class Car(override val model:String , override val number : String) : Movable{
+class Car(override val model:String , override val number : String) : Movable {
     override var speed = 60
     override fun move() {
         println("Едем на машине co скоростью $speed")
     }
 }
-class Aircraft(override val model:String , override val number : String) : Movable{
+class Aircraft(override val model:String , override val number : String) : Movable {
     override var speed = 600
     override fun move(){
         println("летим на самолете со скростью $speed")
@@ -28,7 +30,7 @@ interface Student{
     fun study()
 }
 
-class WorkingStudent(val name: String) : Worker , Student{
+class WorkingStudent(val name: String) : Worker, Student {
     override fun work() = println("$name рфботает")
     override fun study()= println("$name учится" )
 }
@@ -38,7 +40,7 @@ interface VideoPlayable{
 interface AudioPlayable{
     fun play() = println("Play audio")
 }
-class MadialPlayer : VideoPlayable , AudioPlayable {
+class MadialPlayer : VideoPlayable, AudioPlayable {
     override fun play() {
         println("Start playing")
         super<VideoPlayable>.play()

@@ -1,4 +1,4 @@
-import javax.management.Query
+package example
 
 var age: Int = 18
     set (value){

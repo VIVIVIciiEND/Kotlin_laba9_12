@@ -1,4 +1,4 @@
-import jdk.jfr.DataAmount
+package resources
 
 data class OutpostResource(val id : Int, val name : String, var amount: Int){
     override fun toString(): String {
