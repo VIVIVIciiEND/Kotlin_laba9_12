@@ -1,5 +1,7 @@
 package example
 
+import java.security.cert.CertPathValidatorException.Reason
+import java.util.Objects
 import javax.annotation.processing.Messager
 
 sealed class NetworkResult{
@@ -19,7 +21,22 @@ fun handleResult(result: NetworkResult){
             println("загрузка...")
         }
     }
-}fun main(){
+}
+sealed class OrderStatus{
+    object Created : OrderStatus()
+    object Paid: OrderStatus()
+    object Shipped : OrderStatus()
+    data class Cancelled(val reason: String):OrderStatus()
+}
+fun handleOrder(status: OrderStatus){
+    when(status){
+        OrderStatus.Created-> println("заказ создан")
+        OrderStatus.Paid-> println("заказ оплачен")
+        OrderStatus.Shipped-> println("заказ отправлен")
+        is OrderStatus.Cancelled -> println("отменент ${}")
+    }
+}
+fun main(){
     val success = NetworkResult.Success("данные получены")
     val error = NetworkResult.Error("сервер не отвечает", 500)
     val loading = NetworkResult.Loading
