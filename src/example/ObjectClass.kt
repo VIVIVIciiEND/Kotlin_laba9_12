@@ -3,6 +3,7 @@ package example
 import java.security.Principal
 import javax.annotation.processing.Messager
 
+
 object GameSession{
     init {
         println("игровая сессия сооздана")
