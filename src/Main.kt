@@ -20,4 +20,12 @@ fun main(){
     lab.performAction(manager)
     println()
     manager.printAll()
+    val loadedResource = FileStorage.load()
+    loadedResource.forEach { manager.add(it)}
+    if (loadedResource.isEmpty()){
+        manager.add(OutpostResource(1,"Minerals",300))
+        manager.add(OutpostResource(2,"Gas",100))
+
+    }
+    FileStorage.save(manager.getAll())
 }
